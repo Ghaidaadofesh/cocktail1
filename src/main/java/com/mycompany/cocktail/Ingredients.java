@@ -1,0 +1,43 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.cocktail;
+
+/**
+ *
+ * @author user
+ */
+
+public class Ingredients  {
+    private String name;
+    private double calories;
+ 
+    public Ingredients(String name, double calories) {
+        this.name = name;
+        this.calories = calories;
+    }
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getCalories() {
+        return calories;
+    }
+
+    public void setCalories(double calories) {
+        this.calories = calories;
+    }
+    
+    public  String getInfo(){
+        return "Ingredient Name: "+ this.getName()+", Ingredient Calories: "+this.getCalories();
+    }
+    
+
+    
+}
