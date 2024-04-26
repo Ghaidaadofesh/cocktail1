@@ -1,15 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.cocktail;
-import java.util.ArrayList;
-
-
-/**
- *
- * @author user
- */
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -20,7 +9,6 @@ public class Blender  {
   private double volume;
   private ArrayList<Ingredients> i ;
  
-
     public Blender( double capacity) {
         this.capacity = capacity;
         this.volume = 480;
@@ -47,7 +35,6 @@ public class Blender  {
     public void blend(  ){
        System.out.println("Cocktail Is Blended using these Ingredients ");
         disply_details();
-     
     }
 
     public static Color blend( Colors color1, Colors color2 ) {
@@ -57,7 +44,6 @@ public class Blender  {
         int blendedAlpha = (color1.getAlpha() + color2.getAlpha()) / 2;
 
         return new Color(blendedRed, blendedGreen, blendedBlue, blendedAlpha);
-        
     }
     
     public double getTotalCalories() {
