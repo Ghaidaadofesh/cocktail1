@@ -1,13 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.cocktail;
 
-/**
- *
- * @author user
- */
 public class Milk extends Ingredients implements Display , IngredientColor{
     private double volume;
     private Colors color = new Colors(255,255,255,255); 
