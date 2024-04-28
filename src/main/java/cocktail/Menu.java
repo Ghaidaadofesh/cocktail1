@@ -1,5 +1,5 @@
+package cocktail;
 
-package com.mycompany.cocktail;
 
 
 import java.awt.Color;
@@ -9,7 +9,7 @@ public class Menu {
 
     public static void main(String[] args) {
      
-     Blender b = new Blender(1000);
+     Blender b = new Blender(1000);//initialize Blender capacity
      Colors color = new Colors();
      Colors mcolor = new Colors();
    
@@ -29,7 +29,7 @@ public class Menu {
           case 1:
               Scanner input = new Scanner(System.in);
               int c;
-              String add = "1. Add Friuts\n2. Add Milk\n3. Add Nuts\n4. Add Sugar\n5. Add Syrup\n* If You Want To Break The Loop Enter (6) *";
+              String add = "1. Add Friuts\n2. Add Milk\n3. Add Nuts\n4. Add Sugar\n5. Add Syrup\n* If You're Done, Press (6) *";
            do{
                System.out.println(add);
                System.out.println("Enter Your Choice to add Ingredients to the blender ");
@@ -46,19 +46,19 @@ public class Menu {
               col = input.next();
               
               if(col.equalsIgnoreCase("red"))
-                 color = new Colors(255,0,0,255);
+                 color = new Colors(255,0,0,5);
               if(col.equalsIgnoreCase("green"))
-                 color = new Colors(0,255,0,255);
+                 color = new Colors(0,255,0,5);
                if(col.equalsIgnoreCase("blue"))
-                 color = new Colors(0,0,255,255);
+                 color = new Colors(0,0,255,5);
                if(col.equalsIgnoreCase("orange"))
-                 color = new Colors(255,165,0,255);
+                 color = new Colors(255,128,0,5);
                if(col.equalsIgnoreCase("yellow"))
-                 color = new Colors(255,255,0,255);
+                 color = new Colors(255,255,0,5);
                if(col.equalsIgnoreCase("pink"))
-                 color = new Colors(255,192,203,255);
+                 color = new Colors(255,192,203,5);
                if(col.equalsIgnoreCase("purple"))
-                 color = new Colors(160,32,240,255);
+                 color = new Colors(255,102,102,5);
               Fruits f = new Fruits(name,calories,volume,color);
               try {  
                     b.add_Ingredient(f);
@@ -75,7 +75,7 @@ public class Menu {
               calories = input.nextDouble();
               System.out.println("Enter The Volume Of The milk in ml");
               volume = input.nextDouble();
-              mcolor = new Colors(255,255,255,255);
+              mcolor = new Colors(255,255,255,5);
               Milk m = new Milk(name,calories,volume,mcolor);
                try {
                     b.add_Ingredient(m); } 
@@ -85,7 +85,7 @@ public class Menu {
                    }
                    break;
                        case 3:
-               System.out.println("Write Nuts Type to add to Blender");
+               System.out.println("Write Nuts Type (Almonds, Hazelnuts, Pistachios, Cashew)");
                name = scan.next();
                System.out.println("Enter Numbers Of Calories ");
                calories = scan.nextDouble();
@@ -115,7 +115,7 @@ public class Menu {
                    }
                            break;
                        case 5:
-               System.out.println("Write Syrup Type to add to Blender");
+               System.out.println("Write Syrup Type (Caramel, Chocolate, Vanilla)");
                name = scan.next();
                System.out.println("Enter Number Of Calories ");
                calories = scan.nextDouble(); 
@@ -134,7 +134,7 @@ public class Menu {
           case 2:
            b.blend();
            System.out.println();
-           Color mixedColor = Blender.blend(color,mcolor);
+           Color mixedColor = Blender.blendColor(color,mcolor);
            System.out.println("The Final color (RGB): " +"("+ mixedColor.getRed() + ", " + mixedColor.getGreen() + ", " + mixedColor.getBlue()+")");
            System.out.println();
            System.out.println("Total calories = "+b.getTotalCalories());
@@ -166,8 +166,6 @@ public class Menu {
               System.out.println("INVALID CHOICE!!");
       }
     }while(true);
-   
-    }
-
-    }
+  }
+ }
 

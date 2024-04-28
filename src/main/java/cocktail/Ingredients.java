@@ -1,5 +1,4 @@
-
-package com.mycompany.cocktail;
+package cocktail;
 
 
 
@@ -7,11 +6,13 @@ public class Ingredients  {
     private String name;
     private double calories;
  
+    //Ingredients constructor
     public Ingredients(String name, double calories) {
         this.name = name;
         this.calories = calories;
     }
     
+    //setters and getters
     public String getName() {
         return name;
     }
@@ -28,6 +29,7 @@ public class Ingredients  {
         this.calories = calories;
     }
     
+    //Return All The Informations
     public  String getInfo(){
         return "Ingredient Name: "+ this.getName()+", Ingredient Calories: "+this.getCalories();
     }

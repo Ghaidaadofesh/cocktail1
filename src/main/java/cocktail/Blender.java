@@ -1,7 +1,4 @@
-
-package com.mycompany.cocktail;
-import java.util.ArrayList;
-
+package cocktail;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -36,22 +33,23 @@ public class Blender  {
         this.capacity = capacity;
     }
     
+    //Blend All The Ingredients
     public void blend(  ){
        System.out.println("Cocktail Is Blended using these Ingredients ");
         disply_details();
-     
     }
-
-    public static Color blend( Colors color1, Colors color2 ) {
+    
+    //Mix Fruit And Milk Colors
+    public static Color blendColor( Colors color1, Colors color2 ) {
         int blendedRed = (color1.getRed() + color2.getRed()) / 2;
         int blendedGreen = (color1.getGreen() + color2.getGreen()) / 2;
         int blendedBlue = (color1.getBlue() + color2.getBlue()) / 2;
         int blendedAlpha = (color1.getAlpha() + color2.getAlpha()) / 2;
 
-        return new Color(blendedRed, blendedGreen, blendedBlue, blendedAlpha);
-        
+        return new Color(blendedRed, blendedGreen, blendedBlue, blendedAlpha); 
     }
     
+    //Calculate Total Calories for all the ingredients
     public double getTotalCalories() {
         int totalCalories = 0;
         for (Ingredients ingredient : i) {
@@ -60,14 +58,16 @@ public class Blender  {
         return totalCalories;
     }
     
+    //Use within this class Only
     private double getIngredientVolume(Ingredients ingredient) {
-        if (ingredient instanceof Fruits || ingredient instanceof Milk) {
-            return ((IngredientColor) ingredient).getVolume();
-        }
-        return 0;
+        if (ingredient instanceof Fruits || ingredient instanceof Milk || ingredient instanceof Nuts) {
+            return ((Volumes) ingredient).getVolume(); //(Volumes) it's The Interface
+    } 
+        return 0; //It will return Zero if volumes is not for the right type
     }
     
-     private double getTotalVolume() { 
+    //Calculate all Ingredients Volume using [getIngredientVolume()] Method
+     public double getTotalVolume() { 
         double totalVolume = 0;
         for (Ingredients ingredient : i) {
             totalVolume += getIngredientVolume(ingredient);
@@ -79,34 +79,38 @@ public class Blender  {
     public void pour(Cup cup) throws BlenderEmptyException {
         if ( cup.getVolume() <= this.volume){
                 this.volume -= cup.getVolume();
-            System.out.println("Pouring into The Cup");
+            System.out.println("Pouring into The Cup ..");
             System.out.println("Total Calories In The Cup :"+(getTotalCalories() - cup.getVolume()));
         }
         else {
-            throw new BlenderEmptyException();
+            throw new BlenderEmptyException(); //Exception If The Blender Is Empty
         }
     }
    
+    //Add Ingredients to The blender
      public void add_Ingredient(Ingredients in) throws BlenderOverflowException
     {      
         if(this.capacity >= this.volume){
             this.capacity -= volume;
                  i.add(in);   }
      else {
-            throw new BlenderOverflowException();
+            throw new BlenderOverflowException(); //Exception If Blender Capacity Exceed
         }               
     }
     
+    //Remove Ingredients by it's index
     public void remove_Ingredient(int indx)
     {
         i.remove(indx);
     }
     
+    //Return how many Ingredients are Added
     public int getIngredientCount()
     {
       return i.size();
     }
     
+    //print Added Ingredients
     public void print_Ingredients()
     {
         for(int j = 0 ; j <i.size() ; j++)
@@ -115,13 +119,14 @@ public class Blender  {
         }
     }
     
+    //Display interface to check the type of The Ingredients then Display The Details of The Ingredient
     public void disply_details(){
         for ( int e = 0 ; e < i.size(); e++){
             if( i.get(e) instanceof Fruits )
                 ((Fruits)i.get(e)).disply_details();
-            if( i.get(e) instanceof Milk )
+            if ( i.get(e) instanceof Milk )
                 ((Milk)i.get(e)).disply_details();
-            if( i.get(e) instanceof Nuts )
+            if ( i.get(e) instanceof Nuts )
                 ((Nuts)i.get(e)).disply_details();
             if( i.get(e) instanceof Syrup )
                 ((Syrup)i.get(e)).disply_details();
@@ -130,10 +135,11 @@ public class Blender  {
         }
     }
    
-   public String getInfo(){
-       return "Blender Volume : "+ this.getVolume() + ", Blender Capacity: "+this.getCapacity();
+   //return Blender state
+   public String getInfo(){ 
+       return "Blender capacity = "+this.capacity+", Blender volume = "+this.volume;
     }
-   
+  
    
 }
     

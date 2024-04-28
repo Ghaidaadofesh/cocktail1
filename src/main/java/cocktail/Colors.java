@@ -1,18 +1,17 @@
-
-package com.mycompany.cocktail;
-
-
+package cocktail;
 
   public class Colors  {
     private int red;
     private int green;
     private int blue;
-    private int alpha;
+    private int alpha; //Transparency (0 = fully transparent, 10 = full opacity)
 
+    //default constructor not initialize
     public Colors() {
         
     }
 
+    //constructor
     public Colors(int red, int green, int blue,int alpha) {
         this.red = red;
         this.green = green;
@@ -20,6 +19,7 @@ package com.mycompany.cocktail;
         this.alpha = alpha;
     }
 
+    //setters and getters
     public void setRed(int red) {
         this.red = red;
     }

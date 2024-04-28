@@ -1,7 +1,4 @@
-
-package com.mycompany.cocktail;
-
-
+package cocktail;
 
 public interface IngredientColor {
     Colors getColor();
